@@ -1,13 +1,12 @@
 body {
     padding-top: 70px; 
+
 }
 
 .portfolio-item {
-    margin-bottom: 80px;
+    margin-bottom: 10px;
     width: 350px;
     height: 250px;
-    margin-right: 3px;
-  
     border-bottom: 1px solid black;
 }
 
@@ -15,18 +14,26 @@ body {
 	float: right;
 }
 
+#name{
+	float: left;
+	font-weight: bolder;
+}
 
 #buy{
 	width: 100%;
 }
 
-#itemsContainer{
+#price{
+	float: right;
+}
+
+#itemsContainer, #product{
 	margin: 0 auto;
+	margin-top: 5px;
 }
 
 #product{
 	height: 200px;
-
 }
 
 footer {
