@@ -1,4 +1,5 @@
 var request = require('request');
+var database = require('./utils/parseText');
 var accessToken;
 var options = {
     method: 'POST',
@@ -31,6 +32,10 @@ var server = app.listen(app.get("port"), function () {
     console.log('Example app listening at http://%s:%s', host, port);
 });
 
+var price = function(data){
+
+};
+
 // Configuration
 
 app.use(express.static(__dirname + '/public'));
@@ -44,11 +49,6 @@ app.post('/image/tags', function(req, res){
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
     });
-
-    // var formData = {};
-    // for(var i = 0;i < req.body.data.length; i++){
-    // 	formData.url = req.body.data[i];
-    // }
 
     var options={
     	method: 'POST',
@@ -65,7 +65,34 @@ app.post('/image/tags', function(req, res){
 			res.status(404).send(error);
 		}
 		else{
-			res.status(200).send(response.body);
+
+			res.status(200).send(JSON.parse(response.body).results[0].result);
 		}
 	});
+});
+
+app.post('/items', function(req, res){
+    res.set({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+    });
+
+    var options={
+        method: 'POST',
+        url: 'https://api.clarifai.com/v1/tag/',
+        headers:{
+            "Authorization": "Bearer " + accessToken 
+        },
+        form: {
+            url: req.body.encoded_data
+        }
+    }
+    request(options, function(error, response){
+        if(error){
+            res.status(404).send(error);
+        }
+        else{
+            res.status(200).send(response.body);
+        }
+    });
 });
