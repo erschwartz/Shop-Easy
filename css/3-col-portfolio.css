@@ -6,6 +6,13 @@ body {
     margin-bottom: 25px;
 }
 
+#quan, #buy{
+	float: right;
+}
+
+#buy{
+	width: 100%;
+}
 footer {
     margin: 50px 0;
 }
