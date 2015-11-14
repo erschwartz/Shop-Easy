@@ -85,7 +85,7 @@ app.post('/items', function(req, res){
             "Authorization": "Bearer " + accessToken 
         },
         form: {
-            url: req.body.encoded_data
+            url: req.body
         }
     }
     request(options, function(error, response){
