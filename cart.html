@@ -8,6 +8,56 @@
   		<link href="css/3-col-portfolio.css" rel="stylesheet">
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+        <script>
+        $(function(){
+            
+
+            //****AJAX Call to Query DB for User's Items
+            // TODO
+
+            var body="";
+            body+= '<div class="col-md-4 portfolio-item">'
+                +  'Product Title'
+                +  '<a href="#">'
+                +  '<img class="img-responsive" src="http://placehold.it/400x300" alt="">'
+                +   '</a>'
+                +    'Price'
+                +   '</div>';
+
+
+            //**** Populate View with Item Data
+
+            for(i=0; i<3; i++)
+                $("#row_1").append(body);
+
+            for(i=0; i<3; i++)
+                $("#row_2").append(body);
+
+
+            //***** AJAX Call for User Submit
+            // TODO
+
+            var str='http://www.supermarketapi.com/api.asmx/SearchByProductName?APIKEY=6d180291e0&ItemName=Rice';
+
+            $.ajax({
+              url: str,
+              dataType: 'jsonp',
+              success: function(data) {
+                alert("hi");
+                alert(JSON.stringify(data));
+            }
+            
+            });
+
+
+            });
+
+
+
+
+        </script>
 	</head>
 
 <body>
@@ -38,53 +88,29 @@
                 </h1>
             </div>
         </div>
+
+        <div class="row">
+        <div class="col-lg-offset-11 col-lg-1">    
+        <button type="button" class="btn btn-success" name="purchase" style="width: 100%;">Buy</button>
+        </div>
         
         <!-- Items row -->
         <!-- Row 1 -->
-        <div class="row" name="row_1">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
+        <div class="row" id="row_1" name="row_1">
 
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
         </div>
 
         <!-- row 2 -->
 
-        <div class="row" name="row_2">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
+        <div class="row" id="row_2" name="row_2">
 
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
         </div>
 
-        
-
+        <div class="row">
+        <div class="col-lg-offset-11 col-lg-1">    
+        <button type="button" class="btn btn-success" name="purchase" style="width: 100%;">Buy</button>
+        </div>
+        </div>
     </div>
 
 </body>
