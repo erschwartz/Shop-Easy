@@ -78,24 +78,32 @@ app.post('/items', function(req, res){
         "Access-Control-Allow-Origin": "*"
     });
 
+    var body = null;
     console.log(req.body);
+    req.on('data', function(chunk){
+        body += chunk;
+    });
+    req.on('end', function(){
+        console.log("This is the end...");
+        console.log(body);
 
-    var options={
-        method: 'POST',
-        url: 'https://api.clarifai.com/v1/tag/',
-        headers:{
-            "Authorization": "Bearer " + accessToken 
-        },
-        form: {
-            url: req.body
+        var options={
+            method: 'POST',
+            url: 'https://api.clarifai.com/v1/tag/',
+            headers:{
+                "Authorization": "Bearer " + accessToken 
+            },
+            form: {
+                url: body
+            }
         }
-    }
-    request(options, function(error, response){
-        if(error){
-            res.status(404).send(error);
-        }
-        else{
-            res.status(200).send(response.body);
-        }
+        request(options, function(error, response){
+            if(error){
+                res.status(404).send(error);
+            }
+            else{
+                res.status(200).send(response.body);
+            }
+        });
     });
 });
