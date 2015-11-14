@@ -78,6 +78,8 @@ app.post('/items', function(req, res){
         "Access-Control-Allow-Origin": "*"
     });
 
+    console.log(req.body);
+
     var options={
         method: 'POST',
         url: 'https://api.clarifai.com/v1/tag/',
