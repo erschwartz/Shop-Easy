@@ -11,37 +11,52 @@
 
 
         <script>
-        function FileHelper(){
-
-        }
-
 
 
         $(function(){
-            
+
+          var array = [];
+
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'db.text', true);
+            xhr.onreadystatechange = function(){
+                if (xhr.readyState == 4){
+                    if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304){
+                      array = xhr.responseText.split('\n');
+                      var body="";
+                      body += '<div class="row" id="row_1" name="row_1">';
+
+                      for (var i = 0; i < array.length; ++i){
+                        var data;
+
+                        data = array[i].split(',');
+                        body += '<div class="col-md-4 portfolio-item">'
+                              + data[0]
+                              + '<p id="quan">Quantity</p>'
+                              + '<a href="#">'
+                              + '<img id="product" class="img-responsive"'
+                              + 'src=' + '"' +data[2] + '"' + ' alt="">'
+                              + '</a>'
+                              + data[1]
+                              + '</div>';
+                        if (i+1 % 3 == 0){
+                          body += '<div class="row">';
+                        }
+
+                      }
+
+                      $("#itemsContainer").append(body);
+                    }
+                }
+            }
+            xhr.send();
 
             //****AJAX Call to Query DB for User's Items
             // TODO
 
-            var body="";
-            body+= '<div class="col-md-4 portfolio-item">'
-                +  'Product Title'
-                +  '<p id="quan">Quantity</p>'
-                +  '<a href="#">'
-                +  '<img id="product" class="img-responsive"'
-                +  'src="http://placehold.it/400x300" alt="">'
-                +   '</a>'
-                +    'Price'
-                +   '</div>';
 
-
-            //**** Populate View with Item Data
-
-            for(i=0; i<3; i++)
-                $("#row_1").append(body);
-
-            for(i=0; i<3; i++)
-                $("#row_2").append(body);
+            
 
 
             //***** AJAX Call for User Submit
@@ -101,27 +116,19 @@
                 </h1>
             </div>
         </div>
-
-
-
-
-<!--       <div class="row">
-        <div class="col-lg-1">    
-        <button type="button" class="btn btn-success" id="buy" name="purchase">Buy</button>
-        </div> -->
         
         <div id="itemsContainer" name="itemsContainer" class="container">
            <!-- Items row -->
            <!-- Row 1 -->
-            <div class="row" id="row_1" name="row_1">
+      <!--      <div class="row" id="row_1" name="row_1">
 
             </div>
 
            <!-- row 2 -->
 
-            <div class="row" id="row_2" name="row_2">
+       <!--     <div class="row" id="row_2" name="row_2">
 
-            </div>
+            </div> -->
         </div>
 
         <div class="row">
