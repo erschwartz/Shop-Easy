@@ -11,6 +11,12 @@
 
 
         <script>
+        function FileHelper(){
+
+        }
+
+
+
         $(function(){
             
 
@@ -22,7 +28,8 @@
                 +  'Product Title'
                 +  '<p id="quan">Quantity</p>'
                 +  '<a href="#">'
-                +  '<img class="img-responsive" src="http://placehold.it/400x300" alt="">'
+                +  '<img id="product" class="img-responsive"'
+                +  'src="http://placehold.it/400x300" alt="">'
                 +   '</a>'
                 +    'Price'
                 +   '</div>';
@@ -91,6 +98,7 @@
 	<div class="container">
 
         <!-- Page Header -->
+
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Cart : 
@@ -99,25 +107,27 @@
             </div>
         </div>
 
-        <div class="row">
-        <div class="col-lg-offset-11 col-lg-1">    
+<!--       <div class="row">
+        <div class="col-lg-1">    
         <button type="button" class="btn btn-success" id="buy" name="purchase">Buy</button>
-        </div>
+        </div> -->
         
-        <!-- Items row -->
-        <!-- Row 1 -->
-        <div class="row" id="row_1" name="row_1">
+        <div id="itemsContainer" name="itemsContainer" class="container">
+           <!-- Items row -->
+           <!-- Row 1 -->
+            <div class="row" id="row_1" name="row_1">
 
-        </div>
+            </div>
 
-        <!-- row 2 -->
+           <!-- row 2 -->
 
-        <div class="row" id="row_2" name="row_2">
+            <div class="row" id="row_2" name="row_2">
 
+            </div>
         </div>
 
         <div class="row">
-        <div class="col-lg-offset-11 col-lg-1">    
+        <div class="col-lg-11">    
         <button type="button" class="btn btn-success" id="buy" name="purchase">Buy</button>
         </div>
         </div>
