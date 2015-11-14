@@ -3,16 +3,24 @@ body {
 }
 
 .portfolio-item {
-    margin-bottom: 25px;
+    margin-bottom: 80px;
+    width: 350px;
+    height: 250px;
 }
 
-#quan, #buy{
+#quan{
 	float: right;
 }
+
 
 #buy{
 	width: 100%;
 }
+
+#itemsContainer{
+	margin: 0 auto;
+}
+
 footer {
     margin: 50px 0;
 }
