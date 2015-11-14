@@ -39,25 +39,34 @@
             //***** AJAX Call for User Submit
             // TODO
 
-            var str='http://www.supermarketapi.com/api.asmx/SearchByProductName?APIKEY=6d180291e0&ItemName=Rice';
-
             $.ajax({
-              url: str,
-              dataType: 'jsonp',
-              success: function(data) {
-                alert("hi");
-                alert(JSON.stringify(data));
-            }
-            
+                url: 'api.reimaginebanking.com/atms?key=bd7208d02724e6ce92a58e57ea24ecab',
+                data:{
+                    "id":"56241a12de4bf40b171120c8",
+                    "body":{
+                          "merchant_id": "Me",
+                          "medium": "balance",
+                          "purchase_date": "11/14/2015",
+                          "amount": 10.00,
+                          "status": "pending",
+                          "description": "string"
+                    }
+                },
+                success: function(results){
+                    alert("success");
+                }
             });
 
 
             });
-
-
-
 
         </script>
+        <style>
+            body{background: #298167;
+            background-image: url("zenbg-1.png"), url("zenbg-2.png");
+            background-repeat: repeat-x, repeat;
+            }
+        </style>
 	</head>
 
 <body>
