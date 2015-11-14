@@ -1,0 +1,6 @@
+framework module Pods_ShopEasy {
+  umbrella header "Pods-ShopEasy-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -26,7 +26,17 @@ class DetailedImageViewController: UIViewController, UITableViewDelegate, UITabl
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
-        <#code#>
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("detailTableViewCell", forIndexPath: indexPath) as! DetailImageTableViewCell
+        cell.detailImageView.image = detailImages[indexPath.row]
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return detailImages.count
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
 }
