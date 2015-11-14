@@ -17,6 +17,7 @@ request(options, function(error, response){
 	}
 	else{
 		accessToken = JSON.parse(response.body).access_token;
+        console.log(response.body);
 	}
 });
 
